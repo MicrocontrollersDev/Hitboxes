@@ -1,218 +1,242 @@
 package gq.noxiuam.hitboxes.config;
 
-import cc.polyfrost.oneconfig.config.annotations.Checkbox;
-import cc.polyfrost.oneconfig.config.annotations.Color;
+import cc.polyfrost.oneconfig.config.annotations.*;
 import cc.polyfrost.oneconfig.config.core.OneColor;
+import cc.polyfrost.oneconfig.config.data.PageLocation;
 import gq.noxiuam.hitboxes.HitBoxes;
-import cc.polyfrost.oneconfig.config.annotations.Switch;
 import cc.polyfrost.oneconfig.config.data.Mod;
 import cc.polyfrost.oneconfig.config.data.ModType;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityThrowable;
 
 public class HitBoxesConfig extends cc.polyfrost.oneconfig.config.Config {
 
-    // player
-    @Switch(name = "Player Hitbox", subcategory = "Player Hitbox Options")
-    public boolean showPlayerHitbox = true;
+    @Page(
+            name = "Player Hitbox",
+            location = PageLocation.TOP
+    )
+    public HitboxConfiguration playerHitboxConfig = new HitboxConfiguration();
 
-    @Checkbox(name = "Dashed", subcategory = "Player Hitbox Options")
-    public boolean dashedPlayerHitbox = false;
+    @Page(
+            name = "Mob Hitbox",
+            location = PageLocation.TOP
+    )
+    public HitboxConfiguration mobHitboxConfig = new HitboxConfiguration();
 
-    @Switch(name = "Player Hitbox Outline", subcategory = "Player Hitbox Options")
-    public boolean showPlayerOutline = true;
+    @Page(
+            name = "Item Hitbox",
+            location = PageLocation.TOP
+    )
+    public HitboxConfiguration itemHitboxConfig = new HitboxConfiguration();
 
-    @Color(name = "Player Hitbox Outline Color", subcategory = "Player Hitbox Options")
-    public OneColor playerOutlineColor = new OneColor(-1);
+    @Page(
+            name = "XP Orb Hitbox",
+            location = PageLocation.TOP
+    )
+    public HitboxConfiguration xpOrbHitboxConfig = new HitboxConfiguration();
 
-    @Switch(name = "Player Eye Height", subcategory = "Player Hitbox Options")
-    public boolean showPlayerEyeHeight = true;
-
-    @Color(name = "Player Eye Height Color", subcategory = "Player Hitbox Options")
-    public OneColor playerEyeHeightColor = new OneColor(0xFFFF0000);
-
-    @Switch(name = "Player Look Vector", subcategory = "Player Hitbox Options")
-    public boolean showPlayerLookVector = true;
-
-    @Color(name = "Player Look Vector Color", subcategory = "Player Hitbox Options")
-    public OneColor playerLookVectorColor = new OneColor(0xFF0000FF);
-
-    // mob
-    @Switch(name = "Mob Hitbox", subcategory = "Mob Hitbox Options")
-    public boolean showMobHitbox = true;
-
-    @Checkbox(name = "Dashed", subcategory = "Mob Hitbox Options")
-    public boolean dashedMobHitbox = false;
-
-    @Switch(name = "Mob Hitbox Outline", subcategory = "Mob Hitbox Options")
-    public boolean showMobOutline = true;
-
-    @Color(name = "Mob Outline Color", subcategory = "Mob Hitbox Options")
-    public OneColor mobOutlineColor = new OneColor(-1);
-
-    @Switch(name = "Mob Eye Height", subcategory = "Mob Hitbox Options")
-    public boolean showMobEyeHeight = true;
-
-    @Color(name = "Mob Eye Height Color", subcategory = "Mob Hitbox Options")
-    public OneColor mobEyeHeightColor = new OneColor(0xFFFF0000);
-
-    @Switch(name = "Mob Look Vector", subcategory = "Mob Hitbox Options")
-    public boolean showMobLookVector = true;
-
-    @Color(name = "Mob Look Vector Color", subcategory = "Mob Hitbox Options")
-    public OneColor mobLookVectorColor = new OneColor(0xFF0000FF);
-
-    // item
-    @Switch(name = "Item Hitbox", subcategory = "Item Hitbox Options")
-    public boolean showItemHitbox = false;
-
-    @Checkbox(name = "Dashed", subcategory = "Item Hitbox Options")
-    public boolean dashedItemHitbox = false;
-
-    @Switch(name = "Item Hitbox Outline", subcategory = "Item Hitbox Options")
-    public boolean showItemOutline = true;
-
-    @Color(name = "Item Outline Color", subcategory = "Item Hitbox Options")
-    public OneColor itemOutlineColor = new OneColor(-1);
-
-    @Switch(name = "Item Eye Height", subcategory = "Item Hitbox Options")
-    public boolean showItemEyeHeight = true;
-
-    @Color(name = "Item Eye Height Color", subcategory = "Item Hitbox Options")
-    public OneColor itemEyeHeightColor = new OneColor(0xFFFF0000);
-
-    @Switch(name = "Item Look Vector", subcategory = "Item Hitbox Options")
-    public boolean showItemLookVector = true;
-
-    @Color(name = "Item Look Vector Color", subcategory = "Item Hitbox Options")
-    public OneColor itemLookVectorColor = new OneColor(0xFF0000FF);
-
-    // projectiles
-    @Switch(name = "Projectile Hitbox", subcategory = "Projectile Hitbox Options")
-    public boolean showProjectileHitbox = false;
-
-    @Checkbox(name = "Dashed", subcategory = "Projectile Hitbox Options")
-    public boolean dashedProjectileHitbox = false;
-
-    @Switch(name = "Projectile Hitbox Outline", subcategory = "Projectile Hitbox Options")
-    public boolean showProjectileOutline = true;
-
-    @Color(name = "Projectile Outline Color", subcategory = "Projectile Hitbox Options")
-    public OneColor projectileOutlineColor = new OneColor(-1);
-
-    @Switch(name = "Projectile Eye Height", subcategory = "Projectile Hitbox Options")
-    public boolean showProjectileEyeHeight = true;
-
-    @Color(name = "Projectile Eye Height Color", subcategory = "Projectile Hitbox Options")
-    public OneColor projectileEyeHeightColor = new OneColor(0xFFFF0000);
-
-    @Switch(name = "Projectile Look Vector", subcategory = "Projectile Hitbox Options")
-    public boolean showProjectileLookVector = true;
-
-    @Color(name = "Projectile Look Vector Color", subcategory = "Projectile Hitbox Options")
-    public OneColor projectileLookVectorColor = new OneColor(0xFF0000FF);
-
-    // xp orb
-    @Switch(name = "XP Orb Hitbox", subcategory = "XP Orb Hitbox Options")
-    public boolean showXPOrbHitbox = false;
-
-    @Checkbox(name = "Dashed", subcategory = "XP Orb Hitbox Options")
-    public boolean dashedXPOrbHitbox = false;
-
-    @Switch(name = "XP Orb Hitbox Outline", subcategory = "XP Orb Hitbox Options")
-    public boolean showXPOrbOutline = true;
-
-    @Color(name = "XP Orb Outline Color", subcategory = "XP Orb Hitbox Options")
-    public OneColor xpOrbOutlineColor = new OneColor(-1);
-
-    @Switch(name = "XP Orb Eye Height", subcategory = "XP Orb Hitbox Options")
-    public boolean showXPOrbEyeHeight = true;
-
-    @Color(name = "XP Orb Eye Height Color", subcategory = "XP Orb Hitbox Options")
-    public OneColor xpOrbEyeHeightColor = new OneColor(0xFFFF0000);
-
-    @Switch(name = "XP Orb Look Vector", subcategory = "XP Orb Hitbox Options")
-    public boolean showXPOrbLookVector = true;
-
-    @Color(name = "XP Orb Look Vector Color", subcategory = "XP Orb Hitbox Options")
-    public OneColor xpOrbLookVectorColor = new OneColor(0xFF0000FF);
+    @Page(
+            name = "Projectile Hitbox",
+            location = PageLocation.TOP
+    )
+    public HitboxConfiguration projectileHitboxConfig = new HitboxConfiguration();
 
     public HitBoxesConfig() {
         super(new Mod(HitBoxes.NAME, ModType.UTIL_QOL), HitBoxes.MODID + ".json");
         initialize();
 
-        // player
-        addDependency("showPlayerOutline", () -> showPlayerHitbox);
-        addDependency("dashedPlayerHitbox", () -> showPlayerHitbox);
-        addDependency("showPlayerEyeHeight", () -> showPlayerHitbox);
-        addDependency("showPlayerLookVector", () -> showPlayerHitbox);
-
-        addDependency("playerOutlineColor", () -> showPlayerHitbox && showPlayerOutline);
-        addDependency("playerEyeHeightColor", () -> showPlayerHitbox && showPlayerEyeHeight);
-        addDependency("playerLookVectorColor", () -> showPlayerHitbox && showPlayerLookVector);
-
-        // mob
-        addDependency("showMobOutline", () -> showMobHitbox);
-        addDependency("dashedMobHitbox", () -> showMobHitbox);
-        addDependency("showMobEyeHeight", () -> showMobHitbox);
-        addDependency("showMobLookVector", () -> showMobHitbox);
-
-        addDependency("mobOutlineColor", () -> showMobHitbox && showMobOutline);
-        addDependency("mobEyeHeightColor", () -> showMobHitbox && showMobEyeHeight);
-        addDependency("mobLookVectorColor", () -> showMobHitbox && showMobLookVector);
-
-        // item
-        addDependency("showItemOutline", () -> showItemHitbox);
-        addDependency("dashedItemHitbox", () -> showItemHitbox);
-        addDependency("showItemEyeHeight", () -> showItemHitbox);
-        addDependency("showItemLookVector", () -> showItemHitbox);
-
-        addDependency("itemOutlineColor", () -> showItemHitbox && showItemOutline);
-        addDependency("itemEyeHeightColor", () -> showItemHitbox && showItemEyeHeight);
-        addDependency("itemLookVectorColor", () -> showItemHitbox && showItemLookVector);
-
-        // projectile (arrows, etc.)
-        addDependency("showProjectileOutline", () -> showProjectileHitbox);
-        addDependency("dashedProjectileHitbox", () -> showProjectileHitbox);
-        addDependency("showProjectileEyeHeight", () -> showProjectileHitbox);
-        addDependency("showProjectileLookVector", () -> showProjectileHitbox);
-
-        addDependency("projectileOutlineColor", () -> showProjectileHitbox && showProjectileOutline);
-        addDependency("projectileEyeHeightColor", () -> showProjectileHitbox && showProjectileEyeHeight);
-        addDependency("projectileLookVectorColor", () -> showProjectileHitbox && showProjectileLookVector);
-
-        // xp orb
-        addDependency("showXPOrbOutline", () -> showXPOrbHitbox);
-        addDependency("dashedXPOrbHitbox", () -> showXPOrbHitbox);
-        addDependency("showXPOrbEyeHeight", () -> showXPOrbHitbox);
-        addDependency("showXPOrbLookVector", () -> showXPOrbHitbox);
-
-        addDependency("xpOrbOutlineColor", () -> showXPOrbHitbox && showXPOrbOutline);
-        addDependency("xpOrbEyeHeightColor", () -> showXPOrbHitbox && showXPOrbEyeHeight);
-        addDependency("xpOrbLookVectorColor", () -> showXPOrbHitbox && showXPOrbLookVector);
+        setupConditions();
     }
 
     /**
-     * Used to get the options in the form of an array.
+     * Finds a hitbox configuration based on an Entity.
      *
-     * @param entityIn - The entity that will be given a very special hitbox.
+     * @param entity - The entity to find configurations for.
      */
-    public boolean[] getEntityBooleanOptions(Entity entityIn) {
+    public HitboxConfiguration getEntityType(Entity entity) {
 
-        if (entityIn instanceof AbstractClientPlayer) {
-            return new boolean[]{ showPlayerOutline, showPlayerEyeHeight, showPlayerLookVector };
-        } else if (entityIn instanceof EntityItem) {
-            return new boolean[]{ showPlayerOutline, showPlayerEyeHeight, showPlayerLookVector };
-        } else if (entityIn instanceof EntityThrowable) {
-            return new boolean[]{ showProjectileOutline, showProjectileEyeHeight, showProjectileLookVector };
-        } else if (entityIn instanceof EntityXPOrb) {
-            return new boolean[]{ showXPOrbOutline, showXPOrbEyeHeight, showXPOrbLookVector };
+        if (entity instanceof AbstractClientPlayer) {
+            return this.playerHitboxConfig;
+        } else if (entity instanceof EntityItem) {
+            return this.itemHitboxConfig;
+        } else if (entity instanceof EntityXPOrb) {
+            return this.xpOrbHitboxConfig;
+        } else if (entity instanceof EntityThrowable || entity instanceof EntityArrow) {
+            return this.projectileHitboxConfig;
         }
 
-        return new boolean[]{ showMobOutline, showMobEyeHeight, showMobLookVector };
+        return this.mobHitboxConfig;
+    }
+
+    /**
+     * Sets the mod conditions, this will later be setup differently so that it is more efficient, this is it for now though.
+     */
+    private void setupConditions() {
+        // player
+        addDependency("Player Hitbox.showOutline", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitbox.dashedHitbox", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitbox.showEyeHeight", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitbox.showLookVector", () -> playerHitboxConfig.showHitbox);
+
+        addDependency("Player Hitbox.outlineThickness", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitbox.eyeHeightThickness", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitbox.lookVectorThickness", () -> playerHitboxConfig.showHitbox);
+
+        addDependency("Player Hitbox.outlineColor", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showOutline);
+        addDependency("Player Hitbox.eyeHeightColor", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showEyeHeight);
+        addDependency("Player Hitbox.lookVectorColor", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showLookVector);
+        addDependency("Player Hitbox.lookVectorDistance", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showLookVector);
+
+        // mob
+        addDependency("Mob Hitbox.showOutline", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitbox.dashedHitbox", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitbox.showEyeHeight", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitbox.showLookVector", () -> mobHitboxConfig.showHitbox);
+
+        addDependency("Mob Hitbox.outlineThickness", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitbox.eyeHeightThickness", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitbox.lookVectorThickness", () -> mobHitboxConfig.showHitbox);
+
+        addDependency("Mob Hitbox.outlineColor", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showOutline);
+        addDependency("Mob Hitbox.eyeHeightColor", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showEyeHeight);
+        addDependency("Mob Hitbox.lookVectorColor", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showLookVector);
+        addDependency("Mob Hitbox.lookVectorDistance", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showLookVector);
+
+        // item
+        addDependency("Item Hitbox.showOutline", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitbox.dashedHitbox", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitbox.showEyeHeight", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitbox.showLookVector", () -> itemHitboxConfig.showHitbox);
+
+        addDependency("Item Hitbox.outlineThickness", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitbox.eyeHeightThickness", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitbox.lookVectorThickness", () -> itemHitboxConfig.showHitbox);
+
+        addDependency("Item Hitbox.outlineColor", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showOutline);
+        addDependency("Item Hitbox.eyeHeightColor", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showEyeHeight);
+        addDependency("Item Hitbox.lookVectorColor", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showLookVector);
+        addDependency("Item Hitbox.lookVectorDistance", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showLookVector);
+
+        // xp
+        addDependency("XP Orb Hitbox.showOutline", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitbox.dashedHitbox", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitbox.showEyeHeight", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitbox.showLookVector", () -> xpOrbHitboxConfig.showHitbox);
+
+        addDependency("XP Orb Hitbox.outlineThickness", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitbox.eyeHeightThickness", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitbox.lookVectorThickness", () -> xpOrbHitboxConfig.showHitbox);
+
+        addDependency("XP Orb Hitbox.outlineColor", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showOutline);
+        addDependency("XP Orb Hitbox.eyeHeightColor", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showEyeHeight);
+        addDependency("XP Orb Hitbox.lookVectorColor", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showLookVector);
+        addDependency("XP Orb Hitbox.lookVectorDistance", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showLookVector);
+
+        // projectile
+        addDependency("Projectile Hitbox.showOutline", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitbox.dashedHitbox", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitbox.showEyeHeight", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitbox.showLookVector", () -> projectileHitboxConfig.showHitbox);
+
+        addDependency("Projectile Hitbox.outlineThickness", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitbox.eyeHeightThickness", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitbox.lookVectorThickness", () -> projectileHitboxConfig.showHitbox);
+
+        addDependency("Projectile Hitbox.outlineColor", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showOutline);
+        addDependency("Projectile Hitbox.eyeHeightColor", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showEyeHeight);
+        addDependency("Projectile Hitbox.lookVectorColor", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showLookVector);
+        addDependency("Projectile Hitbox.lookVectorDistance", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showLookVector);
+    }
+
+    public static class HitboxConfiguration {
+
+        @Switch(
+                name = "Show Hitbox",
+                subcategory = "General Options"
+        )
+        public boolean showHitbox = true;
+
+        @Switch(
+                name = "Dashed",
+                subcategory = "General Options"
+        )
+        public boolean dashedHitbox = false;
+
+        @Switch(
+                name = "Hitbox Outline",
+                subcategory = "General Options"
+        )
+        public boolean showOutline = true;
+
+        @Switch(
+                name = "Eye Height",
+                subcategory = "General Options"
+        )
+        public boolean showEyeHeight = true;
+
+        @Switch(
+                name = "Look Vector",
+                subcategory = "General Options"
+        )
+        public boolean showLookVector = true;
+
+        @Slider(
+                name = "Outline Thickness",
+                subcategory = "General Options",
+                min = 1,
+                max = 5
+        )
+        public float outlineThickness = 2;
+
+        @Slider(
+                name = "Eye Height Thickness",
+                subcategory = "General Options",
+                min = 1,
+                max = 5
+        )
+        public float eyeHeightThickness = 2;
+
+        @Slider(
+                name = "Look Vector Thickness",
+                subcategory = "General Options",
+                min = 1,
+                max = 5
+        )
+        public float lookVectorThickness = 2;
+
+        @Slider(
+                name = "Look Vector Distance Multiplier",
+                subcategory = "General Options",
+                min = 2,
+                max = 5
+        )
+        public float lookVectorDistance = 2;
+
+        @Color(
+                name = "Hitbox Outline Color",
+                subcategory = "Color Options",
+                size = 2
+        )
+        public OneColor outlineColor = new OneColor(-1);
+
+        @Color(
+                name = "Eye Height Color",
+                subcategory = "Color Options",
+                size = 2
+        )
+        public OneColor eyeHeightColor = new OneColor(0xFFFF0000);
+
+        @Color(
+                name = "Look Vector Color",
+                subcategory = "Color Options",
+                size = 2
+        )
+        public OneColor lookVectorColor = new OneColor(0xFF0000FF);
+
     }
 
 }
