@@ -104,7 +104,10 @@ public class RenderManagerMixin {
      */
     @Inject(method = "renderDebugBoundingBox", at = @At(value = "HEAD"), cancellable = true)
     public void cancelVanillaHitboxes(CallbackInfo ci) {
-        ci.cancel();
+        // A true toggle of the mod, when it's disabled it can go back to the Vanilla behavior.
+        if (HitBoxes.INSTANCE.config.enabled) {
+            ci.cancel();
+        }
     }
 
 }
