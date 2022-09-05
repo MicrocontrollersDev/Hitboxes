@@ -1,13 +1,10 @@
 # HitBoxes
-Allows you to edit the F3 + B Vanilla hitboxes.
-
-## Usage
-This mod is made for OneConfig.
-
-### Features
-This edition of Hitboxes is _NOT_ the one that allows you to cheat.
+A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) that allows you to edit the Vanilla hitboxes in an advanced and unique way.
 
 ![](https://i.imgur.com/6FHGaVS.png)
+
+## Features
+### This edition of Hitboxes is _NOT_ the one that allows you to cheat.
 
 - Ability to have dashed hitboxes.
 - Ability to multiply the length of an entity's look vector
