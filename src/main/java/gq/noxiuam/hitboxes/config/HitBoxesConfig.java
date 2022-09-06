@@ -16,31 +16,31 @@ import net.minecraft.entity.projectile.EntityThrowable;
 public class HitBoxesConfig extends cc.polyfrost.oneconfig.config.Config {
 
     @Page(
-            name = "Player Hitbox",
+            name = "Player Hitboxes",
             location = PageLocation.TOP
     )
     public HitboxConfiguration playerHitboxConfig = new HitboxConfiguration();
 
     @Page(
-            name = "Mob Hitbox",
+            name = "Mob Hitboxes",
             location = PageLocation.TOP
     )
     public HitboxConfiguration mobHitboxConfig = new HitboxConfiguration();
 
     @Page(
-            name = "Item Hitbox",
+            name = "Item Hitboxes",
             location = PageLocation.TOP
     )
     public HitboxConfiguration itemHitboxConfig = new HitboxConfiguration();
 
     @Page(
-            name = "XP Orb Hitbox",
+            name = "XP Orb Hitboxes",
             location = PageLocation.TOP
     )
     public HitboxConfiguration xpOrbHitboxConfig = new HitboxConfiguration();
 
     @Page(
-            name = "Projectile Hitbox",
+            name = "Projectile Hitboxes",
             location = PageLocation.TOP
     )
     public HitboxConfiguration projectileHitboxConfig = new HitboxConfiguration();
@@ -77,79 +77,74 @@ public class HitBoxesConfig extends cc.polyfrost.oneconfig.config.Config {
      */
     private void setupConditions() {
         // player
-        addDependency("Player Hitbox.showOutline", () -> playerHitboxConfig.showHitbox);
-        addDependency("Player Hitbox.dashedHitbox", () -> playerHitboxConfig.showHitbox);
-        addDependency("Player Hitbox.showEyeHeight", () -> playerHitboxConfig.showHitbox);
-        addDependency("Player Hitbox.showLookVector", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitboxes.showOutline", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitboxes.dashedHitbox", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitboxes.showEyeHeight", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitboxes.showLookVector", () -> playerHitboxConfig.showHitbox);
 
-        addDependency("Player Hitbox.outlineThickness", () -> playerHitboxConfig.showHitbox);
-        addDependency("Player Hitbox.eyeHeightThickness", () -> playerHitboxConfig.showHitbox);
-        addDependency("Player Hitbox.lookVectorThickness", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitboxes.outlineThickness", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitboxes.eyeHeightThickness", () -> playerHitboxConfig.showHitbox);
+        addDependency("Player Hitboxes.lookVectorThickness", () -> playerHitboxConfig.showHitbox);
 
-        addDependency("Player Hitbox.outlineColor", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showOutline);
-        addDependency("Player Hitbox.eyeHeightColor", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showEyeHeight);
-        addDependency("Player Hitbox.lookVectorColor", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showLookVector);
-        addDependency("Player Hitbox.lookVectorDistance", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showLookVector);
+        addDependency("Player Hitboxes.outlineColor", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showOutline);
+        addDependency("Player Hitboxes.eyeHeightColor", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showEyeHeight);
+        addDependency("Player Hitboxes.lookVectorColor", () -> playerHitboxConfig.showHitbox && playerHitboxConfig.showLookVector);
 
         // mob
-        addDependency("Mob Hitbox.showOutline", () -> mobHitboxConfig.showHitbox);
-        addDependency("Mob Hitbox.dashedHitbox", () -> mobHitboxConfig.showHitbox);
-        addDependency("Mob Hitbox.showEyeHeight", () -> mobHitboxConfig.showHitbox);
-        addDependency("Mob Hitbox.showLookVector", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitboxes.showOutline", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitboxes.dashedHitbox", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitboxes.showEyeHeight", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitboxes.showLookVector", () -> mobHitboxConfig.showHitbox);
 
-        addDependency("Mob Hitbox.outlineThickness", () -> mobHitboxConfig.showHitbox);
-        addDependency("Mob Hitbox.eyeHeightThickness", () -> mobHitboxConfig.showHitbox);
-        addDependency("Mob Hitbox.lookVectorThickness", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitboxes.outlineThickness", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitboxes.eyeHeightThickness", () -> mobHitboxConfig.showHitbox);
+        addDependency("Mob Hitboxes.lookVectorThickness", () -> mobHitboxConfig.showHitbox);
 
-        addDependency("Mob Hitbox.outlineColor", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showOutline);
-        addDependency("Mob Hitbox.eyeHeightColor", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showEyeHeight);
-        addDependency("Mob Hitbox.lookVectorColor", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showLookVector);
-        addDependency("Mob Hitbox.lookVectorDistance", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showLookVector);
+        addDependency("Mob Hitboxes.outlineColor", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showOutline);
+        addDependency("Mob Hitboxes.eyeHeightColor", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showEyeHeight);
+        addDependency("Mob Hitboxes.lookVectorColor", () -> mobHitboxConfig.showHitbox && mobHitboxConfig.showLookVector);
 
         // item
-        addDependency("Item Hitbox.showOutline", () -> itemHitboxConfig.showHitbox);
-        addDependency("Item Hitbox.dashedHitbox", () -> itemHitboxConfig.showHitbox);
-        addDependency("Item Hitbox.showEyeHeight", () -> itemHitboxConfig.showHitbox);
-        addDependency("Item Hitbox.showLookVector", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitboxes.showOutline", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitboxes.dashedHitbox", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitboxes.showEyeHeight", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitboxes.showLookVector", () -> itemHitboxConfig.showHitbox);
 
-        addDependency("Item Hitbox.outlineThickness", () -> itemHitboxConfig.showHitbox);
-        addDependency("Item Hitbox.eyeHeightThickness", () -> itemHitboxConfig.showHitbox);
-        addDependency("Item Hitbox.lookVectorThickness", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitboxes.outlineThickness", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitboxes.eyeHeightThickness", () -> itemHitboxConfig.showHitbox);
+        addDependency("Item Hitboxes.lookVectorThickness", () -> itemHitboxConfig.showHitbox);
 
-        addDependency("Item Hitbox.outlineColor", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showOutline);
-        addDependency("Item Hitbox.eyeHeightColor", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showEyeHeight);
-        addDependency("Item Hitbox.lookVectorColor", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showLookVector);
-        addDependency("Item Hitbox.lookVectorDistance", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showLookVector);
+        addDependency("Item Hitboxes.outlineColor", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showOutline);
+        addDependency("Item Hitboxes.eyeHeightColor", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showEyeHeight);
+        addDependency("Item Hitboxes.lookVectorColor", () -> itemHitboxConfig.showHitbox && itemHitboxConfig.showLookVector);
 
         // xp
-        addDependency("XP Orb Hitbox.showOutline", () -> xpOrbHitboxConfig.showHitbox);
-        addDependency("XP Orb Hitbox.dashedHitbox", () -> xpOrbHitboxConfig.showHitbox);
-        addDependency("XP Orb Hitbox.showEyeHeight", () -> xpOrbHitboxConfig.showHitbox);
-        addDependency("XP Orb Hitbox.showLookVector", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitboxes.showOutline", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitboxes.dashedHitbox", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitboxes.showEyeHeight", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitboxes.showLookVector", () -> xpOrbHitboxConfig.showHitbox);
 
-        addDependency("XP Orb Hitbox.outlineThickness", () -> xpOrbHitboxConfig.showHitbox);
-        addDependency("XP Orb Hitbox.eyeHeightThickness", () -> xpOrbHitboxConfig.showHitbox);
-        addDependency("XP Orb Hitbox.lookVectorThickness", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitboxes.outlineThickness", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitboxes.eyeHeightThickness", () -> xpOrbHitboxConfig.showHitbox);
+        addDependency("XP Orb Hitboxes.lookVectorThickness", () -> xpOrbHitboxConfig.showHitbox);
 
-        addDependency("XP Orb Hitbox.outlineColor", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showOutline);
-        addDependency("XP Orb Hitbox.eyeHeightColor", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showEyeHeight);
-        addDependency("XP Orb Hitbox.lookVectorColor", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showLookVector);
-        addDependency("XP Orb Hitbox.lookVectorDistance", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showLookVector);
+        addDependency("XP Orb Hitboxes.outlineColor", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showOutline);
+        addDependency("XP Orb Hitboxes.eyeHeightColor", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showEyeHeight);
+        addDependency("XP Orb Hitboxes.lookVectorColor", () -> xpOrbHitboxConfig.showHitbox && xpOrbHitboxConfig.showLookVector);
 
         // projectile
-        addDependency("Projectile Hitbox.showOutline", () -> projectileHitboxConfig.showHitbox);
-        addDependency("Projectile Hitbox.dashedHitbox", () -> projectileHitboxConfig.showHitbox);
-        addDependency("Projectile Hitbox.showEyeHeight", () -> projectileHitboxConfig.showHitbox);
-        addDependency("Projectile Hitbox.showLookVector", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitboxes.showOutline", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitboxes.dashedHitbox", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitboxes.showEyeHeight", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitboxes.showLookVector", () -> projectileHitboxConfig.showHitbox);
 
-        addDependency("Projectile Hitbox.outlineThickness", () -> projectileHitboxConfig.showHitbox);
-        addDependency("Projectile Hitbox.eyeHeightThickness", () -> projectileHitboxConfig.showHitbox);
-        addDependency("Projectile Hitbox.lookVectorThickness", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitboxes.outlineThickness", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitboxes.eyeHeightThickness", () -> projectileHitboxConfig.showHitbox);
+        addDependency("Projectile Hitboxes.lookVectorThickness", () -> projectileHitboxConfig.showHitbox);
 
-        addDependency("Projectile Hitbox.outlineColor", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showOutline);
-        addDependency("Projectile Hitbox.eyeHeightColor", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showEyeHeight);
-        addDependency("Projectile Hitbox.lookVectorColor", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showLookVector);
-        addDependency("Projectile Hitbox.lookVectorDistance", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showLookVector);
+        addDependency("Projectile Hitboxes.outlineColor", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showOutline);
+        addDependency("Projectile Hitboxes.eyeHeightColor", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showEyeHeight);
+        addDependency("Projectile Hitboxes.lookVectorColor", () -> projectileHitboxConfig.showHitbox && projectileHitboxConfig.showLookVector);
     }
 
     public static class HitboxConfiguration {
@@ -207,14 +202,6 @@ public class HitBoxesConfig extends cc.polyfrost.oneconfig.config.Config {
                 max = 5
         )
         public float lookVectorThickness = 2;
-
-        @Slider(
-                name = "Look Vector Distance Multiplier",
-                subcategory = "General Options",
-                min = 2,
-                max = 5
-        )
-        public float lookVectorDistance = 2;
 
         @Color(
                 name = "Hitbox Outline Color",
