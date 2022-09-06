@@ -25,7 +25,7 @@ import static org.lwjgl.opengl.GL11.*;
 public class RenderManagerMixin {
 
     /**
-     * Completely overrides the original hitbox rendering.
+     * Completely overrides the original hitbox rendering method.
      */
     @Inject(method = "doRenderEntity", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/client/renderer/entity/Render;doRender(Lnet/minecraft/entity/Entity;DDDFF)V", shift = At.Shift.AFTER))
@@ -37,6 +37,7 @@ public class RenderManagerMixin {
         if (!config.enabled)
             return;
 
+        // p_147939_10_ is irrelevant here, since we will always render it until the mod is disabled.
         if (!e.showHitbox || entityIn.isInvisible())
             return;
 
@@ -87,7 +88,7 @@ public class RenderManagerMixin {
             Vec3 vec3 = entityIn.getLook(partialTicks);
             worldrenderer.begin(3, DefaultVertexFormats.POSITION_COLOR);
             worldrenderer.pos(x, y + (double)entityIn.getEyeHeight(), z).color(lookVectorColor.getRed(), lookVectorColor.getGreen(), lookVectorColor.getBlue(), lookVectorColor.getAlpha()).endVertex();
-            worldrenderer.pos(x + vec3.xCoord * e.lookVectorDistance, y + (double)entityIn.getEyeHeight() + vec3.yCoord * 2.0, z + vec3.zCoord * 2.0).color(lookVectorColor.getRed(), lookVectorColor.getGreen(), lookVectorColor.getBlue(), lookVectorColor.getAlpha()).endVertex();
+            worldrenderer.pos(x + vec3.xCoord * 2.0, y + (double)entityIn.getEyeHeight() + vec3.yCoord * 2.0, z + vec3.zCoord * 2.0).color(lookVectorColor.getRed(), lookVectorColor.getGreen(), lookVectorColor.getBlue(), lookVectorColor.getAlpha()).endVertex();
             tessellator.draw();
         }
 
