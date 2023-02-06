@@ -27,8 +27,11 @@ public class RenderManagerMixin {
     /**
      * Completely overrides the original hitbox rendering method.
      */
-    @Inject(method = "doRenderEntity", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/renderer/entity/Render;doRender(Lnet/minecraft/entity/Entity;DDDFF)V", shift = At.Shift.AFTER))
+    @Inject(method = "doRenderEntity", at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/client/renderer/entity/Render;doRender(Lnet/minecraft/entity/Entity;DDDFF)V",
+            shift = At.Shift.AFTER
+    ))
     public void overrideHitboxRendering(Entity entityIn, double x, double y, double z, float entityYaw, float partialTicks, boolean p_147939_10_, CallbackInfoReturnable<Boolean> cir) {
 
         HitBoxesConfig config = HitBoxes.INSTANCE.config;
