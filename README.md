@@ -1,5 +1,5 @@
 # HitBoxes
-A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) that allows you to edit the Vanilla hitboxes in an advanced and unique way.
+Allows you to edit the Vanilla hitboxes in an advanced and unique way. 
 
 ![](https://i.imgur.com/IDyHCTb.png)
 
